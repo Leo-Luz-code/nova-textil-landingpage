@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
@@ -20,15 +20,15 @@
       <div class="hero-background">
         <div
           class="hero-bg-image hero-bg-left"
-          style="background-image: url(&quot;img/left.png&quot;)"
+          style="background-image: url('img/left.png')"
         ></div>
         <div
           class="hero-bg-image hero-bg-center"
-          style="background-image: url(&quot;img/center.png&quot;)"
+          style="background-image: url('img/center.png')"
         ></div>
         <div
           class="hero-bg-image hero-bg-right"
-          style="background-image: url(&quot;img/right.png&quot;)"
+          style="background-image: url('img/right.png')"
         ></div>
       </div>
 
@@ -51,7 +51,7 @@
 
           <div class="hero-ctas">
             <a
-              href="https://wa.me/5511999999999?text=Olá! Gostaria de conhecer seus tecidos e tirar algumas dúvidas."
+              href="https://wa.me/557734212368?text=Olá! Gostaria de conhecer seus tecidos e tirar algumas dúvidas."
               class="btn btn-primary btn-icon"
               target="_blank"
             >
@@ -156,7 +156,14 @@
         <div class="fabrics-grid">
           <!-- Card 1: Algodão -->
           <div class="fabric-card">
-            <div class="fabric-color algodao"></div>
+            <div
+              class="fabric-color algodao"
+              style="
+                background-image: url('img/algodao.png');
+                background-size: cover;
+                background-position: center;
+              "
+            ></div>
             <h3>Algodão 100%</h3>
             <p>
               Puro conforto e respirabilidade. Perfeito para roupas casuais,
@@ -170,7 +177,14 @@
 
           <!-- Card 2: Tricoline -->
           <div class="fabric-card">
-            <div class="fabric-color tricoline"></div>
+            <div
+              class="fabric-color tricoline"
+              style="
+                background-image: url('img/tricoline-premium.png');
+                background-size: cover;
+                background-position: center;
+              "
+            ></div>
             <h3>Tricoline Premium</h3>
             <p>
               Tecido leve e macio com excelente acabamento. Ideal para camisas,
@@ -184,7 +198,14 @@
 
           <!-- Card 3: Viscose -->
           <div class="fabric-card">
-            <div class="fabric-color viscose"></div>
+            <div
+              class="fabric-color viscose"
+              style="
+                background-image: url('img/viscose-elegante.png');
+                background-size: cover;
+                background-position: center;
+              "
+            ></div>
             <h3>Viscose Elegante</h3>
             <p>
               Fluidez e elegância em um único tecido. Perfeita para vestidos,
@@ -198,7 +219,14 @@
 
           <!-- Card 4: Linho -->
           <div class="fabric-card">
-            <div class="fabric-color linho"></div>
+            <div
+              class="fabric-color linho"
+              style="
+                background-image: url('img/linho-natural.png');
+                background-size: cover;
+                background-position: center;
+              "
+            ></div>
             <h3>Linho Natural</h3>
             <p>
               Durabilidade e estilo vintage. Excelente para peças estruturadas e
@@ -227,7 +255,7 @@
         <div class="fabrics-cta">
           <p>Quer conhecer mais modelos? Entre em contato conosco!</p>
           <a
-            href="https://wa.me/5511999999999?text=Gostaria de saber mais sobre os tecidos disponíveis."
+            href="https://wa.me/557734212368?text=Gostaria de saber mais sobre os tecidos disponíveis."
             class="btn btn-primary btn-icon"
             target="_blank"
           >
@@ -452,7 +480,7 @@
             </h3>
             <p>Respostas rápidas, atendimento direto e sem complicações</p>
             <a
-              href="https://wa.me/5511999999999"
+              href="https://wa.me/557734212368"
               class="btn btn-primary btn-icon"
               target="_blank"
             >
@@ -513,7 +541,7 @@
 
         <div class="final-cta-buttons">
           <a
-            href="https://wa.me/5511999999999?text=Olá! Quero conversar sobre seus tecidos."
+            href="https://wa.me/557734212368?text=Olá! Quero conversar sobre seus tecidos."
             class="btn btn-primary btn-large btn-icon"
             target="_blank"
           >
@@ -531,6 +559,18 @@
         </div>
       </div>
     </section>
+
+    <!-- ============================================
+         LIGHTBOX MODAL - Visualização de Imagens
+         ============================================ -->
+    <div id="lightboxModal" class="lightbox-modal">
+      <div class="lightbox-content">
+        <button class="lightbox-close" onclick="closeLightbox()">
+          &times;
+        </button>
+        <img id="lightboxImage" class="lightbox-image" alt="Imagem de Tecido" />
+      </div>
+    </div>
 
     <!-- ============================================
          FOOTER - Informações Básicas
@@ -560,7 +600,7 @@
             <h4>Redes Sociais</h4>
             <ul>
               <li>
-                <a href="https://wa.me/5511999999999" target="_blank"
+                <a href="https://wa.me/557734212368" target="_blank"
                   >WhatsApp</a
                 >
               </li>
@@ -581,5 +621,44 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      // Lightbox functionality
+      const fabricColors = document.querySelectorAll(".fabric-color");
+      const lightboxModal = document.getElementById("lightboxModal");
+      const lightboxImage = document.getElementById("lightboxImage");
+
+      fabricColors.forEach((fabric) => {
+        fabric.addEventListener("click", function () {
+          const backgroundImage = this.style.backgroundImage;
+          if (backgroundImage) {
+            // Extract URL from background-image
+            const url = backgroundImage.slice(5, -2); // Remove 'url("' and '")'
+            lightboxImage.src = url;
+            lightboxModal.classList.add("active");
+            document.body.style.overflow = "hidden";
+          }
+        });
+      });
+
+      function closeLightbox() {
+        lightboxModal.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+
+      // Close lightbox when clicking outside the image
+      lightboxModal.addEventListener("click", function (e) {
+        if (e.target === lightboxModal) {
+          closeLightbox();
+        }
+      });
+
+      // Close lightbox with Escape key
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeLightbox();
+        }
+      });
+    </script>
   </body>
 </html>
