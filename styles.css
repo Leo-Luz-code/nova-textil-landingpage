@@ -229,6 +229,10 @@ body {
   margin-bottom: var(--spacing-md);
   line-height: 1.2;
   font-weight: 700;
+  background: rgba(31, 34, 97, 0.7);
+  padding: 1rem;
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
 }
 
 .hero-subheadline {
